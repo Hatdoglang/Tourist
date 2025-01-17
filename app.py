@@ -2,17 +2,21 @@ from flask import Flask, request, session, redirect, url_for, jsonify, render_te
 import firebase_admin
 from firebase_admin import credentials, auth
 import os
+import json
 from flask_cors import CORS
 
-# Path to the Firebase credentials JSON file
-firebase_credentials_path = os.getenv('FIREBASE_CREDENTIALS_PATH', 'firebase_credentials.json')
+# Get Firebase credentials from environment variables
+firebase_service_account = os.getenv('FIREBASE_SERVICE_ACCOUNT')
+firebase_database_url = os.getenv('FIREBASE_DATABASE_URL')
+
+if not firebase_service_account or not firebase_database_url:
+    raise EnvironmentError("Environment variables for Firebase are not set correctly.")
 
 # Initialize Firebase Admin SDK
-if os.path.exists(firebase_credentials_path):
-    cred = credentials.Certificate(firebase_credentials_path)
-    firebase_admin.initialize_app(cred)
-else:
-    raise ValueError(f"Firebase credentials file not found at {firebase_credentials_path}. Please set the correct path.")
+cred = credentials.Certificate(json.loads(firebase_service_account))
+firebase_admin.initialize_app(cred, {
+    'databaseURL': firebase_database_url
+})
 
 app = Flask(__name__)
 
