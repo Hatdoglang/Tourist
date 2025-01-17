@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSAS</title>
+    <link rel="stylesheet" href="/static/css/style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="/" class="logo-container">
+                    <img src="/static/images/logo2.png" alt="CSAS Logo" class="logo">
+                </a>
+                <ul class="nav-links">
+                    <li class="dropdown">
+                        <a href="#" class="login-btn">LOGIN <i class="fa-solid fa-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/loginpage-owner-manager">Beach Resort Owner/Manager</a></li>
+                            <li><a href="/loginpage-officer-manager">Tourism Officer</a></li>
+                        </ul>
+                    </li>                    
+                </ul>
+                
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover the Best Beach Resorts Through AI-Powered Sentiment Analysis</h1>
+                <p class="sub-text">Get data-driven insights that help you create unforgettable experiences for every guest, <br> support 
+                    tourism development, and enhance resort offerings.</p>
+                    <p class="sub-text">For tourists, click the <strong>Get Started</strong> button. If you are a Beach Resort Owner or Tourism Officer, click <strong>Request an Account</strong> to gain access.</p>
+                <a href="/sentimentanalysis" class="cta-button">GET STARTED</a>
+                <button class="cta-button" id="requestAccountButton">REQUEST AN ACCOUNT</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Request an Account Modal -->
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Request an Account</h2>
+                <button class="close-button" id="closeModalButton">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="requestForm">
+                    <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    <input type="text" id="username" name="username" placeholder="Desired Username" required>
+                    <textarea id="reason" name="reason" rows="4" placeholder="Type your message here..."></textarea>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="submit-button" type="submit" form="requestForm">Submit Request</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../static/js/script2.js"></script>
+</body>
+</html>

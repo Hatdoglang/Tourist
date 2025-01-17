@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/Officer/css/officer-manager.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.1.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud2.js"></script>
+    
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="/static/images/logo2.png" alt="Customer Sentiment Analysis System Logo" class="logo">
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#overview" class="nav-item active" data-target="overview" aria-label="Overview Tab">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#sentiment-analysis" class="nav-item" data-target="sentiment-analysis"
+                    aria-label="Sentiment Analysis Tab">
+                    <i class="fa-regular fa-comments"></i>
+                    <span>Sentiment Analysis</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="user-profile" id="profileDropdownButton" aria-label="User Profile Menu">
+                    <div class="profile-icon">
+                        <span title="Officre">
+                            <i class="fa-regular fa-circle-user" aria-hidden="true"></i>
+                        </span>
+                        <span id="userName">Loading...</span>
+                        <i class="fas fa-caret-down" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active" data-section="overview">
+                <h1>Overview</h1>
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <h3>Total Resort</h3>
+                        <p id="total-reviews">Loading...</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="charts-row">
+                <div class="chart-card">
+                    <header class="chart-header">
+                        <h3>Top Performing Resort</h3>
+                    </header>
+                    <div class="chart-body">
+                        <div id="topPerformingResorts" aria-label="Top Performing Resorts"></div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <header class="chart-header">
+                        <h3>Low Performing Resort</h3>
+                    </header>
+                    <div class="chart-body">
+                        <div id="lowPerformingResorts" aria-label="Low Performing Resorts"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sentiment Analysis Section -->
+            <section id="sentiment-analysis" class="content-section" data-section="sentiment-analysis">
+                <div class="sentiment-header">
+                    <h1>Sentiment Analysis</h1>
+                </div>
+
+                <div class="analysis-content">
+                    <div class="chart-row">
+                        <!-- Sentiment Breakdown -->
+                        <div class="chart-card">
+                            <header class="chart-header">
+                                <h3>Sentiment Breakdown</h3>
+                            </header>
+                            <div class="chart-body">
+                                <canvas id="sentimentBreakdownChart"
+                                    aria-label="Sentiment Breakdown Pie Chart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Trend Analysis -->
+                        <div class="chart-card">
+                            <header class="chart-header">
+                                <h3>Trend Analysis</h3>
+                            </header>
+                            <div class="chart-body">
+                                <canvas id="trendAnalysisChart" aria-label="Sentiment Trend Line Chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Positive & Negative Aspects -->
+                    <div class="aspects-row">
+                        <div class="aspects-card">
+                            <h3>Top Negative Aspects</h3>
+                            <canvas id="negativeAspectsChart" aria-label="Top Negative Aspects"></canvas>
+                        </div>
+                        <div class="aspects-card">
+                            <h3>Top Positive Aspects</h3>
+                            <canvas id="positiveAspectsChart" aria-label="Top Positive Aspects"></canvas>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script type="module" src="/static/js/Officer/js/officer-manager.js"></script>
+    <script type="module" src="/static/js/Officer/js/script1.js"></script>
+    <script type="module" src="/static/js/Officer/js/tourism-officer.js"></script>
+    <script type="module" src="/static/js/Officer/js/firebase-setup.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.6.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- WordCloud2.js Library for Word Cloud -->
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud2.js"></script>
+
+
+    <!-- Firebase SDK -->
+    <!-- Firebase SDK -->
+    <script type="module" src="/static/js/Officer/js/sentiment-analysis.js"></script>
+
+</body>
+
+</html>
