@@ -4,9 +4,14 @@ from firebase_admin import credentials, auth
 import os
 from flask_cors import CORS
 
-# Initialize Firebase Admin SDK with your credentials.json file
-cred = credentials.Certificate("firebase-key.json")
-firebase_admin.initialize_app(cred)
+# Load Firebase credentials from environment variable
+firebase_secret_key = os.getenv('FIREBASE_SECRET_KEY')
+
+if firebase_secret_key:
+    cred = credentials.Certificate(firebase_secret_key)
+    firebase_admin.initialize_app(cred)
+else:
+    raise ValueError("Firebase secret key not found in environment variables.")
 
 app = Flask(__name__)
 
